@@ -26,9 +26,9 @@ public class PairedTag extends Tag {
         res.append("<");
         res.append(tagName);
         res.append(" ");
-        for(Map.Entry element : attributes.entrySet()) {
-            String name = (String) element.getKey();
-            String value = (String) element.getValue();
+        for(Map.Entry<String,String> element : attributes.entrySet()) {
+            String name =  element.getKey();
+            String value =  element.getValue();
             res.append(name);
             res.append("=\"");
             res.append(value);

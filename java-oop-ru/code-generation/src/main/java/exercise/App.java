@@ -12,13 +12,13 @@ import java.nio.file.StandardOpenOption;
 // BEGIN
 public class App {
     @SneakyThrows
-    public static void save(Path path, Car car) throws IOException {
+    public static void save(Path path, Car car) {
         var objectMapper = new ObjectMapper();
         objectMapper.writeValue(new File(String.valueOf(path)), car);
     }
 
     @SneakyThrows
-    public static Car extract(Path path) throws IOException {
+    public static Car extract(Path path) {
         var objectMapper = new ObjectMapper();
         return objectMapper.readValue(new File(String.valueOf(path)), Car.class);
     }
