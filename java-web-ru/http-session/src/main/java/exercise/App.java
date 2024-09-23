@@ -22,13 +22,16 @@ public final class App {
             int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
             int per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(5);
             int i;
+            int k;
             if (page == 1) {
                 i = 0;
+                k = per;
             } else {
                 i = ((page - 1) * per) + 1;
+                k = (page * per) + 1;
             }
             var users = Data.getUsers();
-            for (; i < page * per; i++) {
+            for (; i < k; i++) {
                 neededUsers.add(users.get(i));
             }
             ctx.json(neededUsers);
