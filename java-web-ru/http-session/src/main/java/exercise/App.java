@@ -21,9 +21,11 @@ public final class App {
             var neededUsers = new ArrayList<>();
             int page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
             int per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(5);
-            var i = ((page - 1) * per) - 1;
-            if (i < 0) {
+            int i;
+            if (page == 1) {
                 i = 0;
+            } else {
+                i = ((page - 1) * per) + 1;
             }
             var users = Data.getUsers();
             for (; i < page * per; i++) {
