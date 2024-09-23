@@ -27,7 +27,7 @@ public final class App {
                 ctx.json(COMPANIES.get(id));
             }
             catch (IndexOutOfBoundsException e) {
-                throw new NotFoundResponse("Entity with id = " + id + " not found");
+                throw new NotFoundResponse("Company not found");
             }
         });
         // END
