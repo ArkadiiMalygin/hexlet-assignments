@@ -30,9 +30,8 @@ public final class App {
                 i = ((page - 1) * per) + 1;
                 k = (page * per) + 1;
             }
-            var users = Data.getUsers();
             for (; i < k; i++) {
-                neededUsers.add(users.get(i));
+                neededUsers.add(USERS.get(i));
             }
             ctx.json(neededUsers);
         });
