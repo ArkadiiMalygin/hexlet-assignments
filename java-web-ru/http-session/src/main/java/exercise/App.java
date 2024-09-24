@@ -27,8 +27,8 @@ public final class App {
                 i = 0;
                 k = per;
             } else {
-                i = ((page - 1) * per) + 1;
-                k = (page * per) + 1;
+                i = ((page - 1) * per);
+                k = (page * per);
             }
             for (; i < k; i++) {
                 neededUsers.add(USERS.get(i));
