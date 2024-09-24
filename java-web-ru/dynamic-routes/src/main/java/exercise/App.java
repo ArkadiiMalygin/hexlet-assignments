@@ -24,7 +24,14 @@ public final class App {
         app.get("/companies/{id}", ctx -> {
             var id = ctx.pathParamAsClass("id", Integer.class).get();
             try {
-                ctx.json(COMPANIES.get(id));
+                for (Map<String, String> companie : COMPANIES) {
+                    if (companie.get("id").equals(id.toString())) {
+                        ctx.json(companie);
+                        return;
+                    }
+                }
+                throw new IndexOutOfBoundsException();
+
             }
             catch (IndexOutOfBoundsException e) {
                 throw new NotFoundResponse("Company not found");
