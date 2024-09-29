@@ -26,13 +26,17 @@ public final class App {
         app.get("/users/{id}", ctx -> {
             var id = ctx.pathParamAsClass("id", Integer.class).get();
             UserPage userPage;
-            try {
-                userPage = new UserPage(USERS.get(id));
-            } catch (Exception e) {
+            var flag = -1;
+            for (User select : USERS) {
+                if (select.getId() == id) {
+                    userPage = new UserPage(select);
+                    ctx.render("users/show.jte", model("userPage", userPage));
+                    flag++;
+                }
+            }
+            if (flag != 0) {
                 throw new NotFoundResponse("User not found");
             }
-            ctx.render("users/show.jte", model("userPage", userPage));
-
         });
 
         app.get("/users", ctx -> {
