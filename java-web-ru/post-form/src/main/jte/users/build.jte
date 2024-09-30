@@ -4,13 +4,13 @@ content = @`
         <div>
             <label>
                 Имя
-                <input type="text" name="firstName" />
+                <input required type="text" name="firstName" />
             </label>
         </div>
         <div>
             <label>
                 Фамилия
-                <input type="text" name="lastName" />
+                <input required type="text" name="lastName" />
             </label>
         </div>
         <div>
