@@ -9,7 +9,7 @@ import io.javalin.rendering.template.JavalinJte;
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
 import exercise.repository.UserRepository;
-//import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 //import exercise.util.Security;
 
 public final class App {
@@ -37,8 +37,8 @@ public final class App {
         });
 
         app.post("/users", ctx -> {
-            var firstName = ctx.formParam("firstName").toUpperCase();
-            var lastName = ctx.formParam("lastName").toUpperCase();
+            var firstName = StringUtils.capitalize(ctx.formParam("firstName"));
+            var lastName = StringUtils.capitalize(ctx.formParam("lastName"));
             var email = ctx.formParam("email").trim().toLowerCase();
             var password = encrypt(ctx.formParam("password"));
             var passwordConfirmation = ctx.formParam("passwordConfirmation");
