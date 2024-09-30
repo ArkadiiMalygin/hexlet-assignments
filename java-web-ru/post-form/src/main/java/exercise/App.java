@@ -9,8 +9,8 @@ import io.javalin.rendering.template.JavalinJte;
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
 import exercise.repository.UserRepository;
-import org.apache.commons.lang3.StringUtils;
-import exercise.util.Security;
+//import org.apache.commons.lang3.StringUtils;
+//import exercise.util.Security;
 
 public final class App {
 
