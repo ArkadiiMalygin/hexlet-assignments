@@ -28,6 +28,7 @@ public class SessionsController {
                         "Wrong username or password.")
                     .get();
             ctx.sessionAttribute("currentUser", nickname);
+            ctx.status(302);
             ctx.redirect("/");
         } catch (ValidationException e) {
             var nickname = ctx.formParam("nickname");
