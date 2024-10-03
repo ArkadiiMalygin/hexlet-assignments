@@ -8,6 +8,7 @@ import exercise.repository.UsersRepository;
 
 import exercise.util.Security;
 import io.javalin.http.Context;
+import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
 
 public class SessionsController {
@@ -28,8 +29,8 @@ public class SessionsController {
                         "Wrong username or password.")
                     .get();
             ctx.sessionAttribute("currentUser", nickname);
-            ctx.status(302);
-            ctx.redirect("/");
+
+            ctx.redirect("/", HttpStatus.forStatus(302));
         } catch (ValidationException e) {
             var nickname = ctx.formParam("nickname");
             var error = "Wrong username or password.";
