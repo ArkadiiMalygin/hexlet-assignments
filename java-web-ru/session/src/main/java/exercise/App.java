@@ -20,9 +20,9 @@ public final class App {
 
         // BEGIN
         app.get(NamedRoutes.rootPath(), ctx -> {
-                var page = new MainPage(ctx.sessionAttribute("currentUser"));
-                ctx.render("index.jte", model("page", page));
-    });
+            var page = new MainPage(ctx.sessionAttribute("currentUser"));
+            ctx.render("index.jte", model("page", page));
+        });
 
         app.get(NamedRoutes.buildSessionPath(), SessionsController::build);
 

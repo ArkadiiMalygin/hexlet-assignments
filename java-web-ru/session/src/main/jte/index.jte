@@ -11,12 +11,12 @@ content = @`
                 Добро пожаловать ${page.getName().toString()}.
                 Чтобы разлогиниться, удалите куку JSESSIONID из браузера
             <form action="${NamedRoutes.logoutPath()}" method="post">
-                <input type="submit" value="выйти"/>
+                <input type="submit" value="Выйти"/>
             </form>
         </div>
     @else
         <form action="${NamedRoutes.buildSessionPath()}" method="get">
-            <input type="submit" value="войти"/>
+            <input type="submit" value="Войти"/>
         </form>
     @endif
 `

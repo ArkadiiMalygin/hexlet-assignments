@@ -1,10 +1,10 @@
 package exercise.controller;
 
 import static io.javalin.rendering.template.TemplateUtil.model;
-import exercise.dto.MainPage;
+
 import exercise.dto.LoginPage;
 import exercise.repository.UsersRepository;
-import static exercise.util.Security.encrypt;
+
 
 import exercise.util.Security;
 import io.javalin.http.Context;
@@ -25,7 +25,7 @@ public class SessionsController {
             var password = ctx.formParamAsClass("password", String.class)
                 .check(value -> Security.encrypt(value)
                         .equals(UsersRepository.findByName(nickname).get().getPassword())
-                        , "Wrong username or password.")
+                        ,"Wrong username or password.")
                     .get();
             ctx.sessionAttribute("currentUser", nickname);
             ctx.redirect("/");
