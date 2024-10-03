@@ -35,6 +35,7 @@ public class SessionsController {
             var nickname = ctx.formParam("nickname");
             var error = "Wrong username or password.";
             var page = new LoginPage(nickname, error);
+            ctx.status(302);
             ctx.render("build.jte", model("page", page));
         }
     }
