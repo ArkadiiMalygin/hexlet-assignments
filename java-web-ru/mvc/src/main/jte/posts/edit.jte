@@ -16,7 +16,7 @@ content = @`
     @endif
 
     <div class="mx-auto p-4 py-md-5">
-        <form action="/posts/{${page.getId()}" method="post">
+        <form action="/posts/${page.getId()}" method="post">
             <div class="mb-3">
                 <label class="form-label">
                     Название

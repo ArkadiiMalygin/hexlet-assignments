@@ -58,9 +58,18 @@ public class PostsController {
     }
 
     // BEGIN
+    public static void change(Context ctx) {
+        var id = ctx.pathParamAsClass("id", Long.class).get();
+        var post = PostRepository.find(id).get();
+        var name = post.getName();
+        var body = post.getBody();
+        var page = new EditPostPage(id, name, body);
+        ctx.render("posts/edit.jte", model("page", page));
+    }
+
     public static void edit(Context ctx) {
         try {
-            var id = ctx.formParamAsClass("name", Long.class).get();
+            var id = ctx.pathParamAsClass("id", Long.class).get();
             var name = ctx.formParamAsClass("name", String.class)
                     .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
                     .get();
@@ -72,11 +81,11 @@ public class PostsController {
             post.setBody(body);
             ctx.redirect(NamedRoutes.postsPath());
         } catch (ValidationException e) {
-            var id = ctx.formParamAsClass("id", Long.class).get();
+            var id = ctx.pathParamAsClass("id", Long.class).get();
             var name = ctx.formParam("name");
             var body = ctx.formParam("body");
             var page = new EditPostPage(id, name, body, e.getErrors());
-            ctx.render("posts/build.jte", model("page", page)).status(422);
+            ctx.render("posts/edit.jte", model("page", page)).status(422);
         }
     }
     // END
