@@ -23,6 +23,8 @@ public class NamedRoutes {
     }
 
     // BEGIN
-    
+    public static String editPostPath() {
+        return "/posts/{id}/edit";
+    }
     // END
 }

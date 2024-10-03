@@ -70,7 +70,6 @@ public class PostsController {
             Post post = PostRepository.find(id).get();
             post.setName(name);
             post.setBody(body);
-            PostRepository.save(post);
             ctx.redirect(NamedRoutes.postsPath());
         } catch (ValidationException e) {
             var id = ctx.formParamAsClass("id", Long.class).get();
