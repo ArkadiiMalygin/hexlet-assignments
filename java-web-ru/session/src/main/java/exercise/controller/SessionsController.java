@@ -24,8 +24,8 @@ public class SessionsController {
                     .get();
             var password = ctx.formParamAsClass("password", String.class)
                 .check(value -> Security.encrypt(value)
-                        .equals(UsersRepository.findByName(nickname).get().getPassword())
-                        ,"Wrong username or password.")
+                        .equals(UsersRepository.findByName(nickname).get().getPassword()),
+                        "Wrong username or password.")
                     .get();
             ctx.sessionAttribute("currentUser", nickname);
             ctx.redirect("/");
