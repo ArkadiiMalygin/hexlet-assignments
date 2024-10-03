@@ -59,12 +59,16 @@ public class PostsController {
 
     // BEGIN
     public static void change(Context ctx) {
-        var id = ctx.pathParamAsClass("id", Long.class).get();
-        var post = PostRepository.find(id).get();
-        var name = post.getName();
-        var body = post.getBody();
-        var page = new EditPostPage(id, name, body);
-        ctx.render("posts/edit.jte", model("page", page));
+        try {
+            var id = ctx.pathParamAsClass("id", Long.class).get();
+            var post = PostRepository.find(id).get();
+            var name = post.getName();
+            var body = post.getBody();
+            var page = new EditPostPage(id, name, body);
+            ctx.render("posts/edit.jte", model("page", page));
+        } catch (Exception e) {
+            ctx.result("Not found").status(404);
+        }
     }
 
     public static void edit(Context ctx) {
@@ -86,6 +90,8 @@ public class PostsController {
             var body = ctx.formParam("body");
             var page = new EditPostPage(id, name, body, e.getErrors());
             ctx.render("posts/edit.jte", model("page", page)).status(422);
+        } catch (Exception e) {
+            ctx.result("Not found").status(404);
         }
     }
     // END
