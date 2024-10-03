@@ -30,11 +30,12 @@ public class SessionsController {
                     .get();
             ctx.sessionAttribute("currentUser", nickname);
 
-            ctx.redirect("/", HttpStatus.forStatus(302));
+            ctx.redirect("/");
         } catch (ValidationException e) {
             var nickname = ctx.formParam("nickname");
             var error = "Wrong username or password.";
             var page = new LoginPage(nickname, error);
+            ctx.status(302);
             ctx.render("build.jte", model("page", page));
         }
     }
