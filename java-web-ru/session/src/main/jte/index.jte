@@ -15,9 +15,11 @@ content = @`
             </form>
         </div>
     @else
-        <form action="${NamedRoutes.buildSessionPath()}" method="get">
-            <input type="submit" value="Войти"/>
-        </form>
+        <div class="center">
+            <form action="${NamedRoutes.buildSessionPath()}" method="get">
+                <input type="submit" value="Войти"/>
+            </form>
+        </div>
     @endif
 `
 )

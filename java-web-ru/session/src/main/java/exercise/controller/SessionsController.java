@@ -4,11 +4,8 @@ import static io.javalin.rendering.template.TemplateUtil.model;
 
 import exercise.dto.LoginPage;
 import exercise.repository.UsersRepository;
-
-
 import exercise.util.Security;
 import io.javalin.http.Context;
-import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
 
 public class SessionsController {
