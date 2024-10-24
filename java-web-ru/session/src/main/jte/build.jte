@@ -12,7 +12,7 @@
     <form action="${NamedRoutes.loginPath()}" method="post">
         <label>
             Nickname
-            <input type="text" placeholder="Nickname" name="nickname" />
+            <input type="text" placeholder="Nickname" name="name" />
         </label>
         <label>
             Password

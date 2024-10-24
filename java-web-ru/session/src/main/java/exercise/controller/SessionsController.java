@@ -17,7 +17,7 @@ public class SessionsController {
 
     public static void create(Context ctx) {
         try {
-            var nickname = ctx.formParamAsClass("nickname", String.class)
+            var nickname = ctx.formParamAsClass("name", String.class)
                     .check(UsersRepository::existsByName, "Wrong username or password.")
                     .get();
             var password = ctx.formParamAsClass("password", String.class)
@@ -25,11 +25,11 @@ public class SessionsController {
                         .equals(UsersRepository.findByName(nickname).get().getPassword()),
                         "Wrong username or password.")
                     .get();
-            ctx.sessionAttribute("currentUser", nickname);
+            ctx.sessionAttribute("currentUser", "name");
 
             ctx.redirect("/");
         } catch (ValidationException e) {
-            var nickname = ctx.formParam("nickname");
+            var nickname = ctx.formParam("name");
             var error = "Wrong username or password.";
             var page = new LoginPage(nickname, error);
             ctx.status(302);
