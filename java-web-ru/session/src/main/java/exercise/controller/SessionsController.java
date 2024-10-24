@@ -25,7 +25,7 @@ public class SessionsController {
                         .equals(UsersRepository.findByName(nickname).get().getPassword()),
                         "Wrong username or password.")
                     .get();
-            ctx.sessionAttribute("currentUser", "name");
+            ctx.sessionAttribute("currentUser", nickname);
 
             ctx.redirect("/");
         } catch (ValidationException e) {
