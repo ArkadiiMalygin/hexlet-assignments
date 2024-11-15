@@ -109,8 +109,8 @@ class ApplicationTest {
     @Test
     public void testCreate() throws Exception {
         var task = new Task();
-            task.setTitle("some title");
-            task.setDescription("some description");
+        task.setTitle("some title");
+        task.setDescription("some description");
         var request = post("/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(om.writeValueAsString(task));
