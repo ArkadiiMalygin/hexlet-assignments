@@ -150,6 +150,8 @@ class ApplicationTest {
         mockMvc.perform(delete("/tasks/{id}", task1.getId()))
                 .andExpect(status().isOk());
 
+        assertThat(taskRepository.findAll().size()).isEqualTo(1);
+
         mockMvc.perform(delete("/tasks/{id}", task2.getId()))
                 .andExpect(status().isOk());
 
