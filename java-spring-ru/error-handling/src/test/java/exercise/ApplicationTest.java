@@ -40,6 +40,7 @@ class ApplicationTest {
 
     @BeforeEach
     public void setUp() {
+        productRepository.deleteAll();
         testProduct = new Product();
         productRepository.save(testProduct);
     }
