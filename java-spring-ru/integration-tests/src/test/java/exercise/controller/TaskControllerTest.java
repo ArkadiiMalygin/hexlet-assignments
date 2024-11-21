@@ -74,6 +74,7 @@ class ApplicationTest {
 
     @BeforeEach
     public void setUp() {
+        taskRepository.deleteAll();
 
         task1 = Instancio.of(Task.class)
                 .ignore(Select.field(Task::getId))
