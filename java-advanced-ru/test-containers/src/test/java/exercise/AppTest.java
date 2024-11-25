@@ -121,7 +121,7 @@ public class AppTest {
         assertThat(response.getContentAsString()).contains("uuu", "kkk");
 
         MockHttpServletResponse responseDelete = mockMvc
-                .perform(get("/people/{id}", 2))
+                .perform(delete("/people/{id}", 2))
                 .andReturn()
                 .getResponse();
 
